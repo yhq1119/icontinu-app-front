@@ -6,7 +6,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "LAN":  "vue-cli-service serv 0.0.0.0:8080"
+    "LAN": "vue-cli-service serv 0.0.0.0:8080"
   },
   "dependencies": {
     "@mdi/font": "^3.6.95",
