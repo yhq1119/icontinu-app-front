@@ -57,16 +57,23 @@ export default new Router({
       name: 'all courses',
       component: AllCourses
     },
-    // {
-    //   path: '/qr',
-    //   name: 'manage scan QR',
-    //   component: ManageScan
-    // },
-    // {
-    //   path: '/manage',
-    //   name: 'manage courses',
-    //   component: ManageCourse
-    // },
+    // test below
+    {
+      path:'/facecam',
+      name:'test face cam',
+      component: FaceScan
+    },
+    {
+      path: '/qrcam',
+      name: 'test scan QR',
+      component: ManageScan
+    },
+    {
+      path: '/manage',
+      name: 'manage courses',
+      component: ManageCourse
+    },
+    // test above
     {
       path: '/',
       name: 'index',
