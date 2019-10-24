@@ -14,6 +14,7 @@
               <!-- </v-btn> -->
             </v-list-item-title>
             <v-list-item-subtitle>iCONTINU</v-list-item-subtitle>
+            <!-- <v-list-item-subtitle v-if="showName()">username</v-list-item-subtitle> -->
           </v-list-item-content>
         </v-list-item>
         <v-divider></v-divider>
@@ -28,7 +29,7 @@
         <v-divider></v-divider>
       </v-navigation-drawer>
 
-      <v-app-bar  app dark :color="nav_color">
+      <v-app-bar app dark :color="nav_color">
         <!-- -->
         <v-btn v-if="responsive" @click="drawer=!drawer" icon>
           <v-icon>mdi-menu</v-icon>
@@ -46,14 +47,14 @@
           &nbsp;
           <span class="font-weight-light"></span>
         </span>
-        <v-text-field
+        <!-- <v-text-field
           v-if="!responsive"
           solo-inverted
           flat
           hide-details
           label="Search"
           prepend-inner-icon="mdi-magnify"
-        ></v-text-field>
+        ></v-text-field>-->
         <div class="flex-grow-1"></div>
 
         <div style="margin-right:20px;">
@@ -109,6 +110,7 @@ export default {
   },
   data() {
     return {
+      // username:window.localStorage.getItem('username'),
       responsive: false,
       nav_color1: "black",
 
@@ -128,7 +130,7 @@ export default {
       });
     },
     onResponsive() {
-      console.log("Resized");
+      // console.log("Resized");
       if (window.innerWidth < 991) {
         this.responsive = true;
       } else {
@@ -154,6 +156,9 @@ export default {
   },
   computed: {
     ...mapState(["snackbar", "barItems", "isAdmin", "isLogin"]),
+    // showName(){
+    //   return window.localStorage.getItem('username') == undefined
+    // }
     
   },
   mounted() {

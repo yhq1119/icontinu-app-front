@@ -11,15 +11,22 @@
           </v-card-text>
           <v-row align="center" justify="center" class="pa-2 ma-2">
             <!-- <v-col> -->
-            <v-btn color="grey" class="ma-2" small @click="dialogs.showing = false">yes, I agree</v-btn>
+            <v-btn
+              color="grey"
+              id="dialog-btn1"
+              class="ma-2"
+              small
+              @click="dialogs.showing = false"
+            >yes, I agree</v-btn>
             <!-- </v-col> -->
             <!-- <v-col> -->
             <v-btn
               color="grey"
               class="ma-2 orange--text text--darken-1"
               small
+              id="dialog-btn2"
               @click="goPolicy()"
-            >For more details</v-btn>
+            >More details</v-btn>
             <!-- </v-col> -->
           </v-row>
 
@@ -117,6 +124,15 @@
   </v-row>
 </template>
 
+<style scoped>
+#dialog-btn1 {
+  width: 140px;
+}
+#dialog-btn2 {
+  width: 140px;
+}
+</style>
+
 <script>
 export default {
   data() {
@@ -186,7 +202,7 @@ export default {
       };
       this.loading = true;
       let res = await this.$store.dispatch("callAPI", dataSend);
-      console.log(res);
+      // console.log(res);
       this.loading = false;
       if (res.code == "ok") {
         this.$store.commit("SET_SNACKBAR", {

@@ -3,10 +3,10 @@
     <v-dialog v-model="dialog" persistent max-width="600px" max-height="100%">
       <template v-slot:activator="{ on }">
         <v-row>
-          <v-col style="padding:5px;">
-            <v-btn text id="welcome-btn" small rounded v-show="isLogin">Welcome, {{usernameL}}</v-btn>
+          <v-col cols="6" style="padding:0 0 0 5px;">
+            <v-btn text id="welcome-btn" small rounded v-show="isLogin">Hi, {{usernameL}}</v-btn>
           </v-col>
-          <v-col style="padding:0">
+          <v-col cols="6" style="padding:0">
             <v-btn v-show="isLogin" outlined rounded dark @click="logout">Log out</v-btn>
           </v-col>
         </v-row>
@@ -49,7 +49,7 @@
             <div></div>
             <v-col>
               <v-row class="pa-2">
-                <v-btn dark rounded color="orange" @click="login()" block :loading="loading">Login</v-btn>
+                <v-btn dark rounded color="orange" @click="login()" block :loading="loading">Log In</v-btn>
               </v-row>
               <v-row justify="center" class="pa-2">
                 <v-btn light rounded color="orange" block outlined @click="close">Close</v-btn>
@@ -58,7 +58,7 @@
                 <Signup />
               </v-row>
               <v-row cols="12" class="pa-2">
-                <v-btn rounded block outlined @click="loginAdmin()">Organization Portal</v-btn>
+                <v-btn rounded block outlined @click="loginAdmin()">Organisation Portal</v-btn>
               </v-row>
               <v-row cols="12"></v-row>
             </v-col>
@@ -120,7 +120,7 @@ export default {
         call: "DO_NOTHING",
         setData: {}
       });
-      console.log(res);
+      // console.log(res);
       if (res.code == "ok") {
         this.$store.commit("LOG_OUT", false);
         this.$store.commit("SET_SNACKBAR", {
@@ -166,7 +166,7 @@ export default {
       };
       try {
         let res = await this.$store.dispatch("callAPI", dataSend);
-        console.log(res);
+        // console.log(res);
         if (res.code == "ok") {
           if (res.is_staff != "true") {
             this.cancel();
@@ -206,7 +206,7 @@ export default {
       };
       try {
         let res = await this.$store.dispatch("callAPI", dataSend);
-        console.log(res);
+        // console.log(res);
 
         if (res.code == "ok") {
           if (res.is_staff == "true") {

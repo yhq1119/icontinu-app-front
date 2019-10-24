@@ -48,8 +48,8 @@ export default {
       let send = new FormData();
       send.append("username", obj.username);
       send.append("course_id", obj.course);
-      console.log(send.get('username'))
-      console.log(send.get('course_id'))
+      // console.log(send.get('username'))
+      // console.log(send.get('course_id'))
       let res = await this.$store.dispatch("callAPI", {
         send: send,
         branch: "/verify_user_enrollment/",
@@ -90,7 +90,7 @@ export default {
       if (str.length == 0) {
         this.refresh();
       }
-      console.log(str);
+      // console.log(str);
 
       let obj;
       try {
@@ -99,7 +99,7 @@ export default {
           this.open("Please show valid QR code", "error");
           return;
         }
-        console.log(obj.id);
+        // console.log(obj.id);
       } catch {
         this.open("Please show valid QR code", "error");
         return;

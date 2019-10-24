@@ -168,13 +168,13 @@ export default {
           this.enrolstatus = true;
         }
       } catch {
-        console.log("Error in check enrollment");
+        // console.log("Error in check enrollment");
       }
     },
     setup() {
       this.course_id = this.$route.params.id;
       this.point = this.course.course_point;
-      console.log(`P value is ${this.point}`);
+      // console.log(`P value is ${this.point}`);
       this.checkEnroll();
     }
   },

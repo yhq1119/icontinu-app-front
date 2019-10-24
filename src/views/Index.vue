@@ -218,9 +218,9 @@ export default {
         this.filters[j].selected = false;
       }
       this.filterWords = [];
-      this.searchResults = [];
-      this.setCourses();
+      // this.searchResults = [];
       this.searchResults = this.courses;
+      this.setCourse();
     },
     async searchByWord() {
       var founds = [];
@@ -268,14 +268,14 @@ export default {
           }
         }
       }
-      console.log(this.courses);
+      // console.log(this.courses);
       if (count > 0) {
         this.searchResults = founds;
       } else {
         this.searchResults = this.courses;
       }
-      console.log("this courses");
-      console.log(this.courses);
+      // console.log("this courses");
+      // console.log(this.courses);
     },
     date2(str) {
       var temp = str.split(" ");
@@ -301,8 +301,8 @@ export default {
   },
   mounted() {
     this.setCourse()
-    console.log(this.courses.length);
-    console.log(this.searchResults.length);
+    // console.log(this.courses.length);
+    // console.log(this.searchResults.length);
   }
 };
 </script>

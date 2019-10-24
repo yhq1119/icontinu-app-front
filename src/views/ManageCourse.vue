@@ -256,11 +256,11 @@ export default {
     date11(str) {
       var temp = str.split(" ");
       var date = new Date(temp[0]);
-      console.log(date);
+      // console.log(date);
       var ss = date.toString();
-      console.log(ss);
+      // console.log(ss);
       var sss = ss.split(" ");
-      console.log(sss[1]);
+      // console.log(sss[1]);
       return sss[1] + " " + sss[2];
     },
     showCourseInfo() {},

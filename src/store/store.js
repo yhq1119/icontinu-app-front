@@ -135,12 +135,12 @@ export default new Vuex.Store({
     },
     //
     DO_NOTHING(state, data) {
-      console.log(state)
-      console.log(data)
+      // console.log(state)
+      // console.log(data)
     },
     LOG_OUT(state, data) {
-      console.log(state)
-      console.log(data)
+      // console.log(state)
+      // console.log(data)
       window.localStorage.removeItem('username')
       state.isLogin = false
       state.isAdmin = false
@@ -148,9 +148,9 @@ export default new Vuex.Store({
   },
   actions: {
     async callAzure({ commit }, file) {
-      console.log('calling azure')
-      console.log(this.state.azure_config)
-      console.log(this.state.azure_api)
+      // console.log('calling azure')
+      // console.log(this.state.azure_config)
+      // console.log(this.state.azure_api)
       // let Axios = axios.create({
       //   baseURL: this.state.azure_api,
       //   headers: this.state.azure_config.headers
@@ -162,22 +162,22 @@ export default new Vuex.Store({
           this.state.azure_config)
       commit('DO_NOTHING', {})
 
-      console.log(res)
+      // console.log(res)
       return res.data
 
 
     },
     async set_courses() {
       // try{
-      console.log("=======================store set courses=============================")
+      // console.log("=======================store set courses=============================")
       let res = await this.dispatch('callAPI', {
         send: {},
         branch: '/get_all_courses/',
         call: 'DO_NOTHING',
         setData: {}
       })
-      console.log("=======================courses results===============================")
-      console.log(res.courses)
+      // console.log("=======================courses results===============================")
+      // console.log(res.courses)
       this.state.courses = res.courses
       var pics = this.state.randomPics
       for (var i = 0; i < this.state.courses.length; i++) {
@@ -199,22 +199,22 @@ export default new Vuex.Store({
       // try {
       let branch = data.branch
       // see branch info
-      console.log(`The branch is ${branch}`)
+      // console.log(`The branch is ${branch}`)
       let send = data.send
       // see FormData info
-      if (send instanceof FormData) {
-        for (var pair of send.entries()) {
-          console.log(`The send data is ${pair[0]} : ${pair[1]}`)
-        }
-      }
+      // if (send instanceof FormData) {
+      //   for (var pair of send.entries()) {
+      //     console.log(`The send data is ${pair[0]} : ${pair[1]}`)
+      //   }
+      // }
 
       let call = data.call
-      console.log(call)
+      // console.log(call)
       let setData = data.setData
-      console.log(setData)
+      // console.log(setData)
       let res = await API().post(branch, send);
-      console.log(res)
-      console.log(res.data)
+      // console.log(res)
+      // console.log(res.data)
       if (branch == '/authenticate/') {
         if (res.data.code == 'true') {
           this.state.isLogin = true

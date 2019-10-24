@@ -71,8 +71,9 @@ export default {
     qrcode() {
       let qr = document.getElementById("qrcode");
       this.id = this.course_id + new Date().getMilliseconds();
-      console.log(this.id);
-      let qrcode = new QRCode(qr, {
+      // console.log(this.id);
+      let qrcode = 
+      new QRCode(qr, {
         width: 250,
         height: 250,
         text: `{"course":"${this.course_id}",
@@ -81,7 +82,7 @@ export default {
         background: "#f0f",
         foreground: "#ff0"
       });
-      console.log(qrcode);
+      // console.log(qrcode);
     },
     goRec() {
       this.$router.push({
@@ -134,7 +135,7 @@ export default {
         setData: {}
       });
       if (res.code == "true") {
-        console.log(res.message);
+        // console.log(res.message);
       }
     }
   },

@@ -158,9 +158,9 @@ export default {
       this.overlay = true;
       this.img = this.$refs.webcam.capture();
       let file = this.dataURLtoFile(this.img, "taken");
-      console.log(file);
+      // console.log(file);
       let res = await this.$store.dispatch("callAzure", file);
-      console.log(res);
+      // console.log(res);
 
       if (res.length == 0) {
         this.snackBar("No face detected!", "warning");
@@ -218,10 +218,10 @@ export default {
       return new File([u8arr], filename, { type: mime });
     },
     onStarted(stream) {
-      console.log("On Started Event", stream);
+      // console.log("On Started Event", stream);
     },
     onStopped(stream) {
-      console.log("On Stopped Event", stream);
+      // console.log("On Stopped Event", stream);
     },
     onStop() {
       this.snackBar("Camera stopped", "success");
@@ -233,16 +233,16 @@ export default {
       this.$refs.webcam.start();
     },
     onError(error) {
-      console.log("On Error Event", error);
+      // console.log("On Error Event", error);
     },
     onCameras(cameras) {
       this.devices = cameras;
-      console.log("On Cameras Event", cameras);
+      // console.log("On Cameras Event", cameras);
     },
     onCameraChange(deviceId) {
       this.deviceId = deviceId;
       this.camera = deviceId;
-      console.log("On Camera Change Event", deviceId);
+      // console.log("On Camera Change Event", deviceId);
     }
   }
 };
