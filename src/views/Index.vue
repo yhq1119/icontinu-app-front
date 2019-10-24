@@ -220,6 +220,7 @@ export default {
       this.filterWords = [];
       this.searchResults = [];
       this.setCourses();
+      this.searchResults = this.courses;
     },
     async searchByWord() {
       var founds = [];

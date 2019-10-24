@@ -175,6 +175,7 @@ export default {
     },
     async callBackend(faceId) {
       let dataSend = new FormData();
+
       dataSend.append("username", this.username);
       dataSend.append("course_id", this.course_id);
       dataSend.append("face_id", faceId);
@@ -184,8 +185,7 @@ export default {
         call: "DO_NOTHING",
         setData: {}
       });
-        this.overlay = false;
-
+      this.overlay = false;
       if (res.code == "1") {
         let res1 = await this.$store.dispatch("callAPI", {
           send: dataSend,
@@ -193,6 +193,7 @@ export default {
           call: "DO_NOTHING",
           setData: {}
         });
+       
         if (res1.code == "1") {
           this.snackBar("Face verification passed!", "success");
           this.$refs.webcam.stop();
@@ -253,6 +254,7 @@ export default {
   border-radius: 30px;
   border-color: #e3d0ff;
 }
+
 #face-scan-card {
   padding: 2em;
   border-radius: 30px;
