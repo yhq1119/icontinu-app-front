@@ -23,7 +23,7 @@
               <v-card height="120px" id="course-container" @click="find(item.course_id)">
                 <v-row>
                   <v-col
-                  v-bind:style="item.bgc"
+                    v-bind:style="item.bgc"
                     class="date-part"
                     style="padding:0; margin-left:10px;"
                     cols="3"
@@ -62,10 +62,10 @@
           <!--  -->
         </v-col>
         <v-col cols="12" md="4">
-          <v-container fluid style='padding:0'>
+          <v-container fluid style="padding:0">
             <v-card>
               <v-card-title>
-                <h1>Create an event</h1>
+                <h1>Create event</h1>
               </v-card-title>
               <v-overlay v-model="overlay" z-index="10000">Verifying, please wait...</v-overlay>
               <v-snackbar v-model="alert" top :color="color">
@@ -80,46 +80,9 @@
                 <div>
                   <v-text-field label="Course Id" v-model="course_id" v-show="add" disabled></v-text-field>
                   <v-text-field label="Course name" v-model="course_name"></v-text-field>
-                  <v-menu
-                    ref="menu1"
-                    v-model="menu1"
-                    :close-on-content-click="false"
-                    :return-value.sync="course_d1"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="290px"
-                  >
-                    <template v-slot:activator="{ on }">
-                      <v-text-field v-model="course_d1" label="Picker a date" readonly v-on="on"></v-text-field>
-                    </template>
-                    <v-date-picker v-model="course_d1" no-title scrollable>
-                      <div class="flex-grow-1"></div>
-                      <v-btn text color="primary" @click="menu1 = false">Cancel</v-btn>
-                      <v-btn text color="primary" @click="$refs.menu1.save(course_d1)">OK</v-btn>
-                    </v-date-picker>
-                  </v-menu>
-                  <v-menu
-                    ref="menu2"
-                    v-model="menu2"
-                    :close-on-content-click="false"
-                    :return-value.sync="course_t1"
-                    transition="scale-transition"
-                    offset-y
-                    min-width="290px"
-                  >
-                    <template v-slot:activator="{ on }">
-                      <v-text-field
-                        v-model="course_t1"
-                        label="Picker a time"
-                        placeholder="Pick a time"
-                        v-on="on"
-                      ></v-text-field>
-                    </template>
-                    <v-time-picker use-seconds v-model="course_t1" no-title scrollable>
-                      <v-btn text color="primary" @click="menu2 = false">Cancel</v-btn>
-                      <v-btn text color="primary" @click="$refs.menu2.save(course_t1)">OK</v-btn>
-                    </v-time-picker>
-                  </v-menu>
+                  <!--  -->
+
+                  <!--  -->
                   <v-text-field label="Course point" type="number" v-model="course_point"></v-text-field>
                   <v-text-field label="Course location" v-model="course_location"></v-text-field>
                   <v-text-field
@@ -128,6 +91,55 @@
                     v-model="course_duration"
                     placeholder="Hour(s)"
                   ></v-text-field>
+                  <!--  -->
+                  <v-dialog
+                    ref="menu1"
+                    v-model="menu1"
+                    :return-value.sync="course_d1"
+                    persistent
+                    width="290px"
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field
+                        v-model="course_d1"
+                        label="Pick a date"
+                        prepend-inner-icon="mdi-calendar-range"
+                        readonly
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker v-model="course_d1" scrollable>
+                      <v-spacer></v-spacer>
+                      <v-btn text color="primary" @click="menu1 = false">Cancel</v-btn>
+                      <v-btn text color="primary" @click="$refs.menu1.save(course_d1)">OK</v-btn>
+                    </v-date-picker>
+                  </v-dialog>
+                  <!--  -->
+                  <!--  -->
+                  <v-dialog
+                    ref="dialog2"
+                    v-model="menu2"
+                    :return-value.sync="course_t1"
+                    persistent
+                    width="290px"
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field
+                        v-model="course_t1"
+                        label="Pick a time"
+                        prepend-inner-icon="mdi-clock"
+                        readonly
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-time-picker v-if="menu2" v-model="course_t1" min-width="290px" use-seconds>
+                      <v-spacer></v-spacer>
+                      <v-btn text color="primary" @click="menu2 = false">Cancel</v-btn>
+                      <v-btn text color="primary" @click="$refs.dialog2.save(course_t1)">OK</v-btn>
+                    </v-time-picker>
+                  </v-dialog>
+                  <!--  -->
+
                   <v-textarea label="Course description" solo v-model="course_desc"></v-textarea>
                   <!-- <p>{{ this.getCourseToSend() }}</p> -->
                 </div>
@@ -144,7 +156,6 @@
                 <v-btn
                   class="mr-1"
                   id="btn-create"
-
                   dark
                   color="blue"
                   outlined
@@ -153,7 +164,6 @@
                 >Create</v-btn>
                 <v-btn
                   id="btn-modify"
-
                   class="mr-1"
                   dark
                   color="green"
@@ -173,24 +183,26 @@
 </template>
 
 <script>
+import moment from "moment";
 export default {
   data() {
     return {
+      time: null,
       menu1: false,
       date1: "",
       menu2: false,
+      modal2: false,
       date2: "",
       add: false,
-      // tabs: [],
-      alert: false,
-      alert_msg: "",
-      color: "yellow",
+      // alert: false,
+      // alert_msg: "",
+      // color: "yellow",
       course_name: "",
       course_id: "",
       course_time: this.course_d1 + " " + this.course_t1,
       course_d1: null,
       course_t1: null,
-      c_t1_holder: "pick a time",
+      // c_t1_holder: "pick a time",
       course_duration: "",
       course_location: "",
       course_point: "",
@@ -221,6 +233,11 @@ export default {
     };
   },
   methods: {
+    moment,
+    onChange(time, timeString) {
+      // console.log(time, timeString)
+      this.course_t1 = timeString;
+    },
     date1a(str) {
       var temp = str.split(" ");
       var date = new Date(temp[0]);
@@ -245,13 +262,12 @@ export default {
       }
       return "gray";
     },
-    snackbarHint(text,color){
+    snackbarHint(text, color) {
       this.$store.commit("SET_SNACKBAR", {
-        showing:true,
-        text:text,
-        color:color
+        showing: true,
+        text: text,
+        color: color
       });
-
     },
     date11(str) {
       var temp = str.split(" ");
@@ -299,15 +315,17 @@ export default {
           this.courses[i].src = this.pics[i % 5].src;
         }
         this.overlay = false;
-        this.snackbarHint("Courses loaded","success"
-        );
+        this.snackbarHint("Courses loaded", "success");
       } catch {
         this.overlay = false;
-        this.snackbarHint( "fail to load courses","error");
+        this.snackbarHint("fail to load courses", "error");
       }
       this.overlay = false;
     },
     find(id) {
+      if (!this.add) {
+        return;
+      }
       let course = this.courses.find(c => c.course_id == id) || {};
       this.course_id = id;
       this.course_name = course.course_name;
@@ -320,8 +338,7 @@ export default {
       this.course_location = course.course_location;
       this.course_duration = course.course_duration;
       this.course_desc = course.course_desc;
-      this.snackbarHint(`Course [${this.course_name}] selected`,'success')
-      
+      this.snackbarHint(`Course [${this.course_name}] selected`, "success");
     },
     async addCourse() {
       let dataSent = new FormData();
@@ -342,14 +359,14 @@ export default {
         this.course_t1 = null;
         this.overlay = false;
         if (res.code == "1") {
-          this.snackbarHint("Courses added","success");
+          this.snackbarHint("Courses added", "success");
           this.getCourses();
         } else {
           this.snackbarHint("failed adding course", "error");
         }
       } catch {
         this.overlay = false;
-        this.snackbarHint( "fail", "error");
+        this.snackbarHint("fail", "error");
       }
       this.overlay = false;
     },
@@ -374,14 +391,14 @@ export default {
         this.overlay = false;
         this.course_t1 = null;
         if (res.code == "1") {
-          this.snackbarHint( "Courses modified", "success");
+          this.snackbarHint("Courses modified", "success");
           this.getCourses();
         } else {
           this.snackbarHint("failed modifying course", "error");
         }
       } catch {
         this.overlay = false;
-        this.snackbarHint( "fail", "error");
+        this.snackbarHint("fail", "error");
       }
       this.overlay = false;
     }
@@ -456,7 +473,9 @@ h2 {
   border-width: 2px;
   border-color: aquamarine;
 }
-#btn-refresh, #btn-create, #btn-modify{
+#btn-refresh,
+#btn-create,
+#btn-modify {
   width: 120px;
   margin: 5px;
 }

@@ -49,13 +49,13 @@ export default new Vuex.Store({
         admin: false,
         show: true
       },
-      {
-        icon: "mdi-content-paste",
-        title: "Report",
-        link: "/user/report",
-        admin: false,
-        show: true,
-      },
+      // {
+      //   icon: "mdi-content-paste",
+      //   title: "Report",
+      //   link: "/user/report",
+      //   admin: false,
+      //   show: true,
+      // },
       {
         icon: "mdi-history",
         title: "History",

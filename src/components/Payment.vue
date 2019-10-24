@@ -16,7 +16,7 @@
                   <v-img width="6em" height="6em" src="../assets/logo-i.png"></v-img>
                 </v-flex>
                 <v-flex align-self-center>
-                  <span>{{sample.first_name}} {{sample.last_name}}</span>
+                  <span>{{fullname}}</span>
                 </v-flex>
               </v-layout>
             </v-card>
@@ -25,10 +25,10 @@
             <v-card class="pa-4">
               <v-layout column>
                 <v-flex>
-                  <v-text-field label="Name:" v-model="sample.name" placeholder></v-text-field>
+                  <v-text-field label="Name:" v-model="fullname" placeholder></v-text-field>
                 </v-flex>
                 <v-flex>
-                  <v-text-field label="Email:" v-model="sample.email" placeholder></v-text-field>
+                  <v-text-field label="Email:" v-model="userInfo.email" placeholder></v-text-field>
                 </v-flex>
                 <v-flex>
                   <v-text-field label="Profession:" v-model="sample.profession" placeholder></v-text-field>
@@ -169,7 +169,11 @@ export default {
       this.userInfo = res;
     }
   },
-  computed: {},
+  computed: {
+     fullname(){
+      return this.userInfo.first_name+" "+this.userInfo.last_name
+    }
+  },
   mounted() {
     this.getUserInfo();
   }

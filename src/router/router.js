@@ -143,7 +143,7 @@ export default new Router({
             store.commit('LOG_OUT', false)
             store.state.snackbar = {
               showing: true,
-              text: 'Not User!Please change to user login!',
+              text: 'Not User! Please change to user login!',
               color: 'error'
             }
 
@@ -163,7 +163,7 @@ export default new Router({
           store.commit('LOG_OUT', false)
           store.state.snackbar = {
             showing: true,
-            text: 'Not login!Please login!',
+            text: 'Not login! Please login!',
             color: 'error'
           }
         }

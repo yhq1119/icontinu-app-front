@@ -11,8 +11,7 @@
                 <h3 id="p-title">{{title}}</h3>
               </v-col>
               <v-col class="d-none d-md-block" cols="12" md="2">
-                  <v-img src="../assets/policy-dec.png"></v-img>
-      
+                  <v-img src="../assets/policy-dec.png"></v-img>      
               </v-col>
             </v-row>
             <v-row v-for="item in texts" :key="item.index">

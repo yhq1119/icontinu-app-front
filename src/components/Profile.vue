@@ -81,7 +81,9 @@ export default {
       this.userInfo = res;
     }
   },
-  computed: {},
+  computed: {
+   
+  },
   mounted() {
     this.getUserInfo()
   }

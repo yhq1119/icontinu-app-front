@@ -77,6 +77,79 @@
                     <div>
                       <v-text-field label="Course Id" v-model="course_id" v-show="add" disabled></v-text-field>
                       <v-text-field label="Course name" v-model="course_name"></v-text-field>
+
+                      
+                  <!-- <v-dialog
+                    ref="menu1"
+                    v-model="menu1"
+                    :return-value.sync="course_d1"
+                    persistent
+                   width="290px"
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field
+                        v-model="course_d1"
+                        label="Pick a date"
+                        prepend-inner-icon="mdi-calendar-range"
+                        readonly
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-date-picker v-model="course_d1" scrollable>
+                      <v-spacer></v-spacer>
+                      <v-btn text color="primary" @click="menu1 = false">Cancel</v-btn>
+                      <v-btn text color="primary" @click="$refs.menu1.save(course_d1)">OK</v-btn>
+                    </v-date-picker>
+                  </v-dialog> -->
+                  <!--  -->
+                  <!--  -->
+                  <!-- <v-dialog
+                    ref="menu2"
+                    v-model="menu2"
+                    :return-value.sync="course_t1"
+                    persistent
+                    width="290px"
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field
+                        v-model="course_t1"
+                        label="Pick a time"
+                        prepend-inner-icon="mdi-clock"
+                        readonly
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-time-picker v-if="menu2" v-model="course_t1" min-width="290px" use-seconds>
+                      <v-spacer></v-spacer>
+                      <v-btn text color="primary" @click="menu2 = false">Cancel</v-btn>
+                      <v-btn text color="primary" @click="$refs.menu2.save(course_t1)">OK</v-btn>
+                    </v-time-picker>
+                  </v-dialog> -->
+                  <!--  -->
+                  <!-- <v-menu
+                    ref="menu2"
+                    v-model="menu2"
+                    :close-on-content-click="false"
+                    :return-value.sync="course_t1"
+                    transition="scale-transition"
+                    offset-y
+                    min-width="290px"
+                  >
+                    <template v-slot:activator="{ on }">
+                      <v-text-field
+                        v-model="course_t1"
+                        label="Picker a time"
+                        
+                        v-on="on"
+                      ></v-text-field>
+                    </template>
+                    <v-time-picker use-seconds v-model="course_t1" no-title scrollable>
+                      <v-btn text color="primary" @click="menu2 = false">Cancel</v-btn>
+                      <v-btn text color="primary" @click="$refs.menu2.save(course_t1)">OK</v-btn>
+                    </v-time-picker>
+                  </v-menu>-->
+                  <!--  -->
+                  <!-- <a-time-picker @change="onChange" :defaultOpenValue="moment('course_t1', 'HH:mm:ss')" /> -->
                       <v-menu
                         ref="menu1"
                         v-model="menu1"

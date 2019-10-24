@@ -110,13 +110,10 @@ export default {
   },
   data() {
     return {
-      // username:window.localStorage.getItem('username'),
       responsive: false,
       nav_color1: "black",
-
       nav_color: "#DE5900",
       nav_color2: "#5c6ac4",
-
       drawer: false
     };
   },
