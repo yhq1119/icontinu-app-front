@@ -65,7 +65,7 @@
           <v-container fluid style="padding:0">
             <v-card>
               <v-card-title>
-                <h1>Create event</h1>
+                <h1>Manage courses</h1>
               </v-card-title>
               <v-overlay v-model="overlay" z-index="10000">Verifying, please wait...</v-overlay>
               <v-snackbar v-model="alert" top :color="color">
@@ -234,10 +234,10 @@ export default {
   },
   methods: {
     moment,
-    onChange(time, timeString) {
-      // console.log(time, timeString)
-      this.course_t1 = timeString;
-    },
+    // onChange(time, timeString) {
+    //   // console.log(time, timeString)
+    //   this.course_t1 = timeString;
+    // },
     date1a(str) {
       var temp = str.split(" ");
       var date = new Date(temp[0]);
@@ -315,7 +315,7 @@ export default {
           this.courses[i].src = this.pics[i % 5].src;
         }
         this.overlay = false;
-        this.snackbarHint("Courses loaded", "success");
+        // this.snackbarHint("Courses loaded", "success");
       } catch {
         this.overlay = false;
         this.snackbarHint("fail to load courses", "error");
@@ -391,8 +391,8 @@ export default {
         this.overlay = false;
         this.course_t1 = null;
         if (res.code == "1") {
-          this.snackbarHint("Courses modified", "success");
           this.getCourses();
+          this.snackbarHint("Courses modified", "success");
         } else {
           this.snackbarHint("failed modifying course", "error");
         }

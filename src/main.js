@@ -8,12 +8,12 @@ import store from './store/store'
 import vuetify from './plugins/vuetify';
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
-import Antd from 'ant-design-vue'
-import 'ant-design-vue/dist/antd.css'
+// import Antd from 'ant-design-vue'
+// import 'ant-design-vue/dist/antd.css'
 
 Vue.config.productionTip = false
 
-Vue.use(Antd)
+// Vue.use(Antd)
 
 /* eslint-disable no-new */
 new Vue({
