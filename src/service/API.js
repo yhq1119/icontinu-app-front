@@ -2,8 +2,8 @@ import axios from 'axios';
 
 export default () => {
     return axios.create({
-        // baseURL: 'http://157.245.63.35:8000/iContinu',
-        baseURL: 'https://157.245.63.35:8000/iContinu',
+     baseURL: 'http://157.245.63.35:8000/iContinu',
+    //    baseURL: 'https://157.245.63.35:8000/iContinu',
 
         // baseURL: 'http://157.245.63.35:8001/iContinu',
         // baseURL: '/iContinu',
