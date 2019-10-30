@@ -59,8 +59,8 @@ export default new Router({
     },
     // test below
     {
-      path:'/facecam',
-      name:'test face cam',
+      path: '/facecam',
+      name: 'test face cam',
       component: FaceScan
     },
     {
@@ -78,7 +78,7 @@ export default new Router({
       path: '/',
       name: 'index',
       component: Index
-    }, 
+    },
     // {
     //   path: '/mcam',
     //   name: 'test cam',
@@ -93,12 +93,15 @@ export default new Router({
         let res1 = await API().post('/authenticate_staff/')
         if (res1.data.code != 'true') {
           store.state.isAdmin = false
+          store.commit('LOG_OUT', false)
+
           next('/')
           store.state.snackbar = {
             showing: true,
             text: 'Not Admin!',
             color: 'error'
           }
+
         }
         else {
           store.state.isAdmin = true
@@ -148,8 +151,8 @@ export default new Router({
             }
 
           }
-        } 
-        else if( res.data == undefined){
+        }
+        else if (res.data == undefined) {
           store.state.snackbar = {
             showing: true,
             text: 'No response',
@@ -157,7 +160,7 @@ export default new Router({
           }
           next('/')
         }
-        
+
         else {
           store.state.isLogin = true
           store.commit('LOG_OUT', false)
